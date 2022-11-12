@@ -1,0 +1,475 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Kumbh Sans", sans-serif;
+}
+
+body {
+  font-size: 16px;
+  min-height: 100vh;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.container {
+  width: min(100% - 3.125rem, 68.75rem);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  justify-content: unset;
+}
+
+.hamburger {
+  width: 0.9375rem;
+}
+
+.logo,
+.hamburger,
+.cart,
+.user {
+  cursor: pointer;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: hsl(0deg, 0%, 100%);
+  z-index: 2;
+  padding-block: 1.25rem;
+  box-shadow: 0 0.0625rem 0.625rem -0.125rem hsl(219deg, 9%, 45%);
+}
+@media (min-width: 56.25rem) {
+  header {
+    box-shadow: unset;
+    padding-block: 1.875rem;
+  }
+  header .container {
+    position: relative;
+  }
+  header .container::after {
+    content: "";
+    position: absolute;
+    top: 5.1875rem;
+    left: 0;
+    width: 100%;
+    height: 0.0625rem;
+    opacity: 0.1;
+    background-color: hsl(219deg, 9%, 45%);
+  }
+}
+header .container {
+  gap: 0.9375rem;
+}
+header .container .logo {
+  justify-self: flex-end;
+  width: 8.75rem;
+  padding: 1px;
+}
+header .container .nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  display: none;
+}
+header .container .user-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  justify-content: flex-end;
+  flex-grow: 1;
+  gap: 1.0625rem;
+}
+header .container .user-details .checkout {
+  display: none;
+}
+header .container .user-details .user {
+  width: 1.5625rem;
+  height: 1.5625rem;
+  border-radius: 100%;
+}
+header .container .user-details .user img {
+  border-radius: 100%;
+}
+@media (min-width: 56.25rem) {
+  header .container .logo {
+    margin-right: 2.1875rem;
+  }
+  header .container .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1.5625rem;
+  }
+  header .container .nav-links li {
+    list-style: none;
+  }
+  header .container .nav-links li a {
+    text-decoration: none;
+    font-weight: 400;
+    color: hsl(219deg, 9%, 45%);
+    font-size: 1.0625rem;
+  }
+  header .container .nav-links .active {
+    position: relative;
+  }
+  header .container .nav-links .active::before {
+    content: "";
+    position: absolute;
+    top: 4.0625rem;
+    left: 0;
+    width: 100%;
+    height: 0.1875rem;
+    background-color: hsl(26deg, 100%, 55%);
+  }
+  header .container .hamburger {
+    display: none;
+  }
+  header .container .user-details .user {
+    margin-left: 1.875rem;
+    width: 3.125rem;
+    height: 3.125rem;
+  }
+}
+
+main {
+  padding-top: 1.25rem;
+  display: grid;
+  place-content: center;
+}
+@media (min-width: 36.25rem) {
+  main .container .left-container .show-sneakers {
+    width: min(100% - 4.375rem, 34.375rem);
+    margin-inline: auto;
+    border-radius: 0 0 50% 50%;
+  }
+  main .container .left-container .show-sneakers .sneaker {
+    border-radius: 0 0 50% 50%;
+  }
+  main .container .right-container {
+    max-width: 37.5rem;
+  }
+  main .container .right-container .pricing-cart {
+    margin-top: 1.25rem;
+    max-width: 31.25rem;
+    margin-inline: auto;
+  }
+}
+main .container {
+  margin-inline: unset;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(1fr);
+}
+@media (min-width: 56.25rem) {
+  main .container {
+    width: min(100% - 1.25rem, 87.5rem);
+    margin-inline: auto;
+    grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+    gap: 7.5rem;
+  }
+  main .container .left-container .show-sneakers {
+    border-radius: unset;
+  }
+  main .container .left-container .show-sneakers .sneaker {
+    border-radius: unset;
+  }
+}
+main .container .review-sneakers {
+  display: none;
+}
+main .container .left-container {
+  background-size: cover;
+}
+main .container .left-container .show-sneakers {
+  position: relative;
+  height: 21.875rem;
+}
+main .container .left-container .show-sneakers .sneaker {
+  height: 100%;
+}
+main .container .left-container .show-sneakers .arrows {
+  position: absolute;
+  top: 0.625rem;
+  left: 0;
+  right: 0;
+  width: min(100% - 2.5rem, 43.75rem);
+  height: 100%;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+main .container .left-container .show-sneakers .arrows .next,
+main .container .left-container .show-sneakers .arrows .prev {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(0.5625rem, 0.625rem + 1vw, 1.0625rem);
+  background-color: hsl(0deg, 0%, 100%);
+  border-radius: 100%;
+}
+main .container .left-container .show-sneakers .arrows .next img,
+main .container .left-container .show-sneakers .arrows .prev img {
+  width: 0.8125rem;
+  height: 0.8125rem;
+}
+main .container .right-container {
+  width: min(100% - 2.5rem, 50rem);
+  margin-inline: auto;
+}
+main .container .right-container .header {
+  margin-top: 1rem;
+}
+main .container .right-container .header span {
+  color: hsl(26deg, 100%, 55%);
+  font-weight: 700;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+}
+main .container .right-container .header h1 {
+  margin-top: 1.0625rem;
+  font-weight: 700;
+  font-size: 1.6875rem;
+  color: hsl(220deg, 13%, 13%);
+}
+@media (min-width: 56.25rem) {
+  main .container .right-container .header {
+    margin-top: 0;
+  }
+  main .container .right-container .header h1 {
+    font-size: 2.8125rem;
+  }
+}
+main .container .right-container p {
+  margin-top: 1.25rem;
+  line-height: 1.5;
+  color: hsl(219deg, 9%, 45%);
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+@media (min-width: 56.25rem) {
+  main .container .right-container p {
+    margin-top: 1.5625rem;
+  }
+}
+main .container .right-container .pricing-cart .pricing {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (min-width: 56.25rem) {
+  main .container .right-container .pricing-cart .pricing {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.625rem;
+  }
+}
+main .container .right-container .pricing-cart .pricing h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: hsl(220deg, 13%, 13%);
+  display: flex;
+  align-items: center;
+}
+main .container .right-container .pricing-cart .pricing h2 span {
+  font-size: 1.0625rem;
+  color: hsl(26deg, 100%, 55%);
+  background-color: hsl(25deg, 100%, 94%);
+  margin-left: 1.25rem;
+  padding: 0.3125rem 0.4375rem;
+  border-radius: 0.375rem;
+  font-weight: 700;
+}
+main .container .right-container .pricing-cart .pricing .reduction {
+  font-weight: 400;
+  color: hsl(220deg, 14%, 75%);
+  text-decoration: line-through;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+main .container .right-container .pricing-cart .add-cart {
+  margin-top: 1.875rem;
+}
+main .container .right-container .pricing-cart .add-cart .range {
+  margin-bottom: 1.25rem;
+  background-color: hsl(223deg, 64%, 98%);
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0.625rem;
+}
+main .container .right-container .pricing-cart .add-cart .range .plus,
+main .container .right-container .pricing-cart .add-cart .range .minus {
+  width: 0.75rem;
+  height: 0.75rem;
+  cursor: pointer;
+}
+main .container .right-container .pricing-cart .add-cart .range .minus {
+  height: 0.3125rem;
+  width: 0.75rem;
+}
+main .container .right-container .pricing-cart .add-cart .range .count {
+  font-weight: 700;
+  color: hsl(220deg, 13%, 13%);
+  font-size: 1rem;
+}
+main .container .right-container .pricing-cart .add-cart .button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(26deg, 100%, 55%);
+  padding: 0.9375rem;
+  border-radius: 0.625rem;
+  cursor: pointer;
+  margin-bottom: 3.75rem;
+}
+@media (min-width: 56.25rem) {
+  main .container .right-container .pricing-cart .add-cart .button {
+    margin: 0;
+    box-shadow: 0 0.3125rem 0.625rem -0.125rem hsl(26deg, 100%, 55%);
+    transition: 0.2s ease-in;
+  }
+  main .container .right-container .pricing-cart .add-cart .button:hover {
+    opacity: 0.6;
+  }
+}
+main .container .right-container .pricing-cart .add-cart .button .cart {
+  width: 0.9375rem;
+  height: 0.9375rem;
+  margin-right: 0.625rem;
+}
+main .container .right-container .pricing-cart .add-cart .button p {
+  color: hsl(223deg, 64%, 98%);
+  margin: 0;
+  font-weight: 700;
+}
+@media (min-width: 56.25rem) {
+  main .container .right-container .pricing-cart .add-cart {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 9.375rem 1fr;
+    place-content: center;
+    gap: 1.25rem;
+  }
+  main .container .right-container .pricing-cart .add-cart .range {
+    margin: 0;
+  }
+}
+@media (min-width: 56.25rem) {
+  main {
+    padding-top: 11.875rem;
+  }
+  main .container .left-container {
+    border-radius: 0.9375rem;
+  }
+  main .container .left-container .show-sneakers {
+    width: 100%;
+    height: 100%;
+  }
+  main .container .left-container .show-sneakers .sneaker {
+    border-radius: 1.25rem;
+  }
+  main .container .left-container .show-sneakers .arrows {
+    display: none;
+  }
+  main .container .left-container .review-sneakers {
+    display: flex;
+    margin-block: 1.25rem;
+    gap: 1.25rem;
+    width: 28.125rem;
+  }
+  main .container .left-container .review-sneakers .thumb {
+    border-radius: 0.9375rem;
+  }
+  main .container .left-container .review-sneakers .thumb img {
+    border-radius: 0.9375rem;
+    height: 100%;
+  }
+}
+
+.lightbox {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s ease-in-out;
+}
+@media (min-width: 56.25rem) {
+  .lightbox {
+    display: none;
+  }
+}
+.lightbox .mobile-navigation {
+  z-index: 2;
+  height: 100vh;
+  width: 65%;
+  background-color: hsl(0deg, 0%, 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3.125rem;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 1.875rem;
+  transform: translateX(-110%);
+  transition: transform 0.4s ease-in-out;
+  visibility: visible;
+}
+.lightbox .mobile-navigation .mobile-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+.lightbox .mobile-navigation .mobile-links li {
+  list-style: none;
+}
+.lightbox .mobile-navigation .mobile-links li a {
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: hsl(220deg, 13%, 13%);
+}
+.lightbox .mobile-navigation .mobile-links li a:hover {
+  color: hsl(26deg, 100%, 55%);
+  transition: 0.3s ease;
+}
+.lightbox .mobile-navigation .close {
+  width: 0.875rem;
+}
+.lightbox .show-nav {
+  transform: translateX(0);
+  transition: transform 0.4s ease-in;
+}
+
+.show-lightbox {
+  background-color: hsla(0deg, 0%, 0%, 0.774);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease;
+  transition: transform 0.6s ease-in-out;
+}/*# sourceMappingURL=style.css.map */

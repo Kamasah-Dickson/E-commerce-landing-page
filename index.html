@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- displays site properly based on user's device -->
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="./images/favicon-32x32.png"
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="./dist/style.css" />
+		<script src="./dist/js/app.js" defer></script>
+		<title>Frontend Mentor | E-commerce product page</title>
+	</head>
+	<body>
+		<header>
+			<div class="container">
+				<div class="hamburger mobile">
+					<img src="./images/icon-menu.svg" alt="menu" />
+				</div>
+				<a href="index.html" class="logo"
+					><img src="./images/logo.svg" alt="sneakers"
+				/></a>
+				<ul class="nav-links">
+					<li class="active"><a href="#">Collections</a></li>
+					<li><a href="#">Men</a></li>
+					<li><a href="#">Women</a></li>
+					<li><a href="#">About</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+				<div class="user-details">
+					<div class="cart">
+						<img src="./images/icon-cart.svg" alt="cart" />
+						<div class="checkout">
+							<h3>Cart</h3>
+							<div class="items">
+								<div class="sneaker-img"><img src="" alt="sneaker" /></div>
+								<div class="details">
+									<p>Autumn Limited Edition...</p>
+									<p class="price"></p>
+									<span>x</span> <span id="range"></span>
+									<span class="total"> </span>
+								</div>
+								<button>checkout</button>
+							</div>
+						</div>
+					</div>
+					<div class="user">
+						<img src="./images/Kamasah.jpg" alt="user" />
+					</div>
+				</div>
+			</div>
+			<div class="lightbox">
+				<div class="mobile-navigation">
+					<img class="close" src="./images/icon-close.svg" alt="close" />
+					<ul class="mobile-links">
+						<li><a href="#">Collections</a></li>
+						<li><a href="#">Men</a></li>
+						<li><a href="#">Women</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
+				</div>
+			</div>
+		</header>
+
+		<main>
+			<div class="container">
+				<div class="left-container">
+					<div class="show-sneakers">
+						<div class="arrows">
+							<div class="prev">
+								<img src="./images/icon-previous.svg" alt="previous" />
+							</div>
+							<div class="next">
+								<img src="./images/icon-next.svg" alt="next" />
+							</div>
+						</div>
+						<img
+							src="./images/image-product-1.jpg"
+							alt="sneakers"
+							class="sneaker"
+						/>
+					</div>
+					<div class="review-sneakers">
+						<div class="thumb">
+							<img
+								class="sneaker"
+								src="./images/image-product-3-thumbnail.jpg"
+								alt="sneakers"
+							/>
+						</div>
+						<div class="thumb">
+							<img
+								class="sneaker"
+								src="./images/image-product-3-thumbnail.jpg"
+								alt="sneakers"
+							/>
+						</div>
+						<div class="thumb">
+							<img
+								class="sneaker"
+								src="./images/image-product-3-thumbnail.jpg"
+								alt="sneakers"
+							/>
+						</div>
+						<div class="thumb">
+							<img
+								class="sneaker"
+								src="./images/image-product-3-thumbnail.jpg"
+								alt="sneakers"
+							/>
+						</div>
+					</div>
+				</div>
+				<div class="right-container">
+					<div class="header">
+						<span>Sneaker Company</span>
+						<h1>Fall Limited Edition Sneakers</h1>
+					</div>
+					<p>
+						These low-profile sneakers are your perfect casual wear companion.
+						Featuring a durable rubber outer sole, they’ll withstand everything
+						the weather can offer.
+					</p>
+					<div class="pricing-cart">
+						<div class="pricing">
+							<h2>$125.00 <span class="percent">50%</span></h2>
+							<span class="reduction">$250.00</span>
+						</div>
+						<div class="add-cart">
+							<div class="range">
+								<img class="minus" src="./images/icon-minus.svg" alt="reduce" />
+								<span class="count" id="count">0</span>
+								<img class="plus" src="./images/icon-plus.svg" alt="add-more" />
+							</div>
+							<div class="button">
+								<img
+									class="cart"
+									src="./images/icon-cart2.svg"
+									alt="add to cart"
+								/>
+								<p>Add to cart</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+
+		<!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+	</body>
+</html>

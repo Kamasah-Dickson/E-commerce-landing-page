@@ -1,0 +1,68 @@
+@use "../utilities/" as u;
+@use "../global/" as g;
+.lightbox {
+	width: 100%;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	opacity: 0;
+	visibility: hidden;
+	transition: 0.5s ease-in-out;
+	@include u.breakpoints(large) {
+		display: none;
+	}
+
+	.mobile-navigation {
+		z-index: 2;
+		height: 100vh;
+		width: 65%;
+		background-color: g.$White;
+		@include u.flex;
+		gap: u.rem(50);
+		flex-direction: column;
+		justify-content: flex-start;
+		align-items: flex-start;
+		padding: u.rem(30);
+		transform: translateX(-110%);
+		transition: transform 0.4s ease-in-out;
+
+		visibility: visible;
+
+		.mobile-links {
+			@include u.flex;
+			flex-direction: column;
+			gap: u.rem(20);
+			align-items: flex-start;
+			li {
+				list-style: none;
+				// height: 40%;
+				a {
+					text-decoration: none;
+					font-size: u.rem(20);
+					font-weight: 700;
+					color: g.$Very-vark-blue;
+					&:hover {
+						color: g.$Orange;
+						transition: 0.3s ease;
+					}
+				}
+			}
+		}
+		.close {
+			width: u.rem(14);
+		}
+	}
+	.show-nav {
+		transform: translateX(0);
+		transition: transform 0.4s ease-in;
+	}
+}
+.show-lightbox {
+	background-color: g.$Black;
+	opacity: 1;
+	visibility: visible;
+	transition: opacity 0.3s ease;
+	transition: transform 0.6s ease-in-out;
+}

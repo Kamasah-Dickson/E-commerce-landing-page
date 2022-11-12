@@ -1,0 +1,46 @@
+@use "../utilities/" as u;
+
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: "Kumbh Sans", sans-serif;
+}
+
+body {
+	font-size: 16px;
+	min-height: 100vh;
+}
+
+img {
+	width: 100%;
+	height: auto;
+	display: block;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.container {
+	width: min(100% - u.rem(50), u.rem(1100));
+	margin-inline: auto;
+	@include u.flex;
+	justify-content: unset;
+}
+
+.hamburger {
+	width: u.rem(15);
+}
+
+.logo,
+.hamburger,
+.cart,
+.user {
+	cursor: pointer;
+}
+
+// .mobile {
+// 	display: none;
+// }
