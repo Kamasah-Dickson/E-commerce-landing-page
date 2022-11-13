@@ -114,7 +114,7 @@ header {
 	}
 }
 
-@include u.breakpoints(large) {
+@include u.breakpoints(medium) {
 	.active-scroll {
 		padding-block: u.rem(10);
 		backdrop-filter: blur(4px);

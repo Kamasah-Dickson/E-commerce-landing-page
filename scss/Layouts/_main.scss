@@ -3,8 +3,6 @@
 main {
 	padding-top: u.rem(20);
 	display: grid;
-	place-content: center;
-
 	@include u.breakpoints(medium) {
 		.container {
 			.left-container {
@@ -27,9 +25,12 @@ main {
 			}
 		}
 	}
+	@include u.breakpoints(large) {
+		height: 100vh;
+		place-content: center;
+	}
 
 	.container {
-		height: 100%;
 		@include u.breakpoints(large) {
 			width: min(100% - u.rem(20), u.rem(1400));
 			margin-inline: auto;
@@ -272,5 +273,9 @@ main {
 				}
 			}
 		}
+	}
+
+	@include u.breakpoints(larger) {
+		padding-top: u.rem(190);
 	}
 }

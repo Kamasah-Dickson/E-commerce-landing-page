@@ -2,7 +2,7 @@
 $breakpoints-min: (
 	"medium": u.rem(580),
 	"large": u.rem(900),
-	"xlarge": u.rem(1440),
+	"larger": u.rem(1024),
 );
 
 @mixin breakpoints($size) {

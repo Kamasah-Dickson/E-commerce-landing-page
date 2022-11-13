@@ -164,7 +164,7 @@ header .container .user-details .user:hover {
   }
 }
 
-@media (min-width: 56.25rem) {
+@media (min-width: 36.25rem) {
   .active-scroll {
     padding-block: 0.625rem;
     -webkit-backdrop-filter: blur(4px);
@@ -187,7 +187,6 @@ header .container .user-details .user:hover {
 main {
   padding-top: 1.25rem;
   display: grid;
-  place-content: center;
 }
 @media (min-width: 36.25rem) {
   main .container .left-container .show-sneakers {
@@ -205,8 +204,13 @@ main {
     margin-top: 1.875rem;
   }
 }
+@media (min-width: 56.25rem) {
+  main {
+    height: 100vh;
+    place-content: center;
+  }
+}
 main .container {
-  height: 100%;
   margin-inline: unset;
   width: 100%;
   display: grid;
@@ -465,6 +469,11 @@ main .container .right-container .pricing-cart .add-cart .button p {
   }
   main .container .left-container .review-sneakers .active img {
     opacity: 0.3;
+  }
+}
+@media (min-width: 64rem) {
+  main {
+    padding-top: 11.875rem;
   }
 }
 
