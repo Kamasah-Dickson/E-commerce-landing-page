@@ -11,8 +11,8 @@ window.addEventListener("scroll", scrolling);
 
 function scrolling() {
 	if (
-		document.body.scrollTop >= 35 ||
-		document.documentElement.scrollTop >= 35
+		document.body.scrollTop >= 70 ||
+		document.documentElement.scrollTop >= 70
 	) {
 		header.classList.add("active-scroll");
 	} else {

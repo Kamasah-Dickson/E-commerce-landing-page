@@ -164,7 +164,7 @@ header .container .user-details .user:hover {
   }
 }
 
-@media (min-width: 36.25rem) {
+@media (min-width: 56.25rem) {
   .active-scroll {
     padding-block: 0.625rem;
     -webkit-backdrop-filter: blur(4px);
@@ -206,7 +206,6 @@ main {
 }
 @media (min-width: 56.25rem) {
   main {
-    height: 100vh;
     place-content: center;
   }
 }

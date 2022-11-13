@@ -26,7 +26,6 @@ main {
 		}
 	}
 	@include u.breakpoints(large) {
-		height: 100vh;
 		place-content: center;
 	}
 
