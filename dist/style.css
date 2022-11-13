@@ -10,6 +10,7 @@
 body {
   font-size: 16px;
   min-height: 100vh;
+  scroll-behavior: smooth;
 }
 
 img {
@@ -19,6 +20,12 @@ img {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  caret-color: transparent;
 }
 
 .container {
@@ -50,11 +57,12 @@ header {
   z-index: 2;
   padding-block: 1.25rem;
   box-shadow: 0 0.0625rem 0.625rem -0.125rem hsl(219deg, 9%, 45%);
+  transition: all 0.3s ease;
 }
 @media (min-width: 56.25rem) {
   header {
     box-shadow: unset;
-    padding-block: 1.875rem;
+    padding-block: 1.5625rem;
   }
   header .container {
     position: relative;
@@ -62,7 +70,7 @@ header {
   header .container::after {
     content: "";
     position: absolute;
-    top: 5.1875rem;
+    top: 4.875rem;
     left: 0;
     width: 100%;
     height: 0.0625rem;
@@ -99,9 +107,15 @@ header .container .user-details .user {
   width: 1.5625rem;
   height: 1.5625rem;
   border-radius: 100%;
+  border: 0.15625rem solid transparent;
+  transition: border 0.5s ease;
 }
 header .container .user-details .user img {
   border-radius: 100%;
+}
+header .container .user-details .user:hover {
+  border: 0.15625rem solid hsl(26deg, 100%, 55%);
+  transition: border 0.5s ease;
 }
 @media (min-width: 56.25rem) {
   header .container .logo {
@@ -121,13 +135,20 @@ header .container .user-details .user img {
     color: hsl(219deg, 9%, 45%);
     font-size: 1.0625rem;
   }
+  header .container .nav-links li a:hover {
+    color: hsl(220deg, 13%, 13%);
+    transition: 0.4s ease;
+  }
   header .container .nav-links .active {
     position: relative;
+  }
+  header .container .nav-links .active a {
+    color: hsl(26deg, 100%, 55%);
   }
   header .container .nav-links .active::before {
     content: "";
     position: absolute;
-    top: 4.0625rem;
+    top: 3.75rem;
     left: 0;
     width: 100%;
     height: 0.1875rem;
@@ -143,6 +164,26 @@ header .container .user-details .user img {
   }
 }
 
+@media (min-width: 56.25rem) {
+  .active-scroll {
+    padding-block: 0.625rem;
+    -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
+    background-color: rgba(255, 255, 255, 0.685);
+  }
+  .active-scroll .container:after {
+    display: none;
+  }
+  .active-scroll .container .active::before {
+    display: none;
+  }
+  .active-scroll .container .active a {
+    font-weight: 400;
+  }
+  .active-scroll .container .active a:hover, .active-scroll .container .active a:active {
+    color: hsl(26deg, 100%, 55%);
+  }
+}
 main {
   padding-top: 1.25rem;
   display: grid;
@@ -158,15 +199,14 @@ main {
     border-radius: 0 0 50% 50%;
   }
   main .container .right-container {
-    max-width: 37.5rem;
+    max-width: 43.75rem;
   }
   main .container .right-container .pricing-cart {
-    margin-top: 1.25rem;
-    max-width: 31.25rem;
-    margin-inline: auto;
+    margin-top: 1.875rem;
   }
 }
 main .container {
+  height: 100%;
   margin-inline: unset;
   width: 100%;
   display: grid;
@@ -229,6 +269,11 @@ main .container .right-container {
   width: min(100% - 2.5rem, 50rem);
   margin-inline: auto;
 }
+@media (min-width: 56.25rem) {
+  main .container .right-container {
+    width: 100%;
+  }
+}
 main .container .right-container .header {
   margin-top: 1rem;
 }
@@ -250,6 +295,7 @@ main .container .right-container .header h1 {
   }
   main .container .right-container .header h1 {
     font-size: 2.8125rem;
+    line-height: 1;
   }
 }
 main .container .right-container p {
@@ -261,8 +307,12 @@ main .container .right-container p {
 }
 @media (min-width: 56.25rem) {
   main .container .right-container p {
-    margin-top: 1.5625rem;
+    margin-top: 2.1875rem;
   }
+}
+main .container .right-container .pricing-cart {
+  max-width: 25rem;
+  margin-inline: auto;
 }
 main .container .right-container .pricing-cart .pricing {
   display: flex;
@@ -327,6 +377,8 @@ main .container .right-container .pricing-cart .add-cart .range .count {
   font-size: 1rem;
 }
 main .container .right-container .pricing-cart .add-cart .button {
+  box-shadow: 0 0.3125rem 0.625rem -0.125rem hsl(26deg, 100%, 55%);
+  transition: 0.2s ease-in;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -338,14 +390,12 @@ main .container .right-container .pricing-cart .add-cart .button {
   cursor: pointer;
   margin-bottom: 3.75rem;
 }
+main .container .right-container .pricing-cart .add-cart .button:hover {
+  opacity: 0.8;
+}
 @media (min-width: 56.25rem) {
   main .container .right-container .pricing-cart .add-cart .button {
     margin: 0;
-    box-shadow: 0 0.3125rem 0.625rem -0.125rem hsl(26deg, 100%, 55%);
-    transition: 0.2s ease-in;
-  }
-  main .container .right-container .pricing-cart .add-cart .button:hover {
-    opacity: 0.6;
   }
 }
 main .container .right-container .pricing-cart .add-cart .button .cart {
@@ -374,7 +424,7 @@ main .container .right-container .pricing-cart .add-cart .button p {
 }
 @media (min-width: 56.25rem) {
   main {
-    padding-top: 11.875rem;
+    padding-top: 8.75rem;
   }
   main .container .left-container {
     border-radius: 0.9375rem;
@@ -393,14 +443,28 @@ main .container .right-container .pricing-cart .add-cart .button p {
     display: flex;
     margin-block: 1.25rem;
     gap: 1.25rem;
-    width: 28.125rem;
   }
   main .container .left-container .review-sneakers .thumb {
+    border-radius: 0.8125rem;
+    border: 0.125rem solid transparent;
+    overflow: hidden;
     border-radius: 0.9375rem;
   }
+  main .container .left-container .review-sneakers .thumb:hover {
+    opacity: 0.5;
+    transition: opacity 0.4s ease-in;
+  }
   main .container .left-container .review-sneakers .thumb img {
-    border-radius: 0.9375rem;
     height: 100%;
+  }
+  main .container .left-container .review-sneakers .active {
+    border: 0.125rem solid hsl(26deg, 100%, 55%);
+  }
+  main .container .left-container .review-sneakers .active:hover {
+    opacity: unset;
+  }
+  main .container .left-container .review-sneakers .active img {
+    opacity: 0.3;
   }
 }
 

@@ -12,6 +12,7 @@
 body {
 	font-size: 16px;
 	min-height: 100vh;
+	scroll-behavior: smooth;
 }
 
 img {
@@ -21,6 +22,9 @@ img {
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
+	-webkit-user-drag: none;
+	user-select: none;
+	caret-color: transparent;
 }
 
 .container {

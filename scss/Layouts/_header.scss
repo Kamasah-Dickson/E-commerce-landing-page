@@ -9,15 +9,17 @@ header {
 	z-index: 2;
 	padding-block: u.rem(20);
 	box-shadow: 0 u.rem(1) u.rem(10) u.rem(-2) g.$Dark-grayish-blue;
+	transition: all 0.3s ease;
+
 	@include u.breakpoints(large) {
 		box-shadow: unset;
-		padding-block: u.rem(30);
+		padding-block: u.rem(25);
 		.container {
 			position: relative;
 			&::after {
 				content: "";
 				position: absolute;
-				top: u.rem(83);
+				top: u.rem(78);
 				left: 0;
 				width: 100%;
 				height: u.rem(1);
@@ -26,6 +28,7 @@ header {
 			}
 		}
 	}
+
 	.container {
 		gap: u.rem(15);
 		.logo {
@@ -49,8 +52,14 @@ header {
 				width: u.rem(25);
 				height: u.rem(25);
 				border-radius: 100%;
+				border: u.rem(2.5) solid transparent;
+				transition: border 0.5s ease;
 				img {
 					border-radius: 100%;
+				}
+				&:hover {
+					border: u.rem(2.5) solid g.$Orange;
+					transition: border 0.5s ease;
 				}
 			}
 		}
@@ -69,14 +78,21 @@ header {
 						font-weight: 400;
 						color: g.$Dark-grayish-blue;
 						font-size: u.rem(17);
+						&:hover {
+							color: g.$Very-vark-blue;
+							transition: 0.4s ease;
+						}
 					}
 				}
 				.active {
+					a {
+						color: g.$Orange;
+					}
 					position: relative;
 					&::before {
 						content: "";
 						position: absolute;
-						top: u.rem(65);
+						top: u.rem(60);
 						left: 0;
 						width: 100%;
 						height: u.rem(3);
@@ -92,6 +108,31 @@ header {
 					margin-left: u.rem(30);
 					width: u.rem(50);
 					height: u.rem(50);
+				}
+			}
+		}
+	}
+}
+
+@include u.breakpoints(large) {
+	.active-scroll {
+		padding-block: u.rem(10);
+		backdrop-filter: blur(4px);
+		background-color: rgba(255, 255, 255, 0.685);
+		.container {
+			&:after {
+				display: none;
+			}
+			.active {
+				&::before {
+					display: none;
+				}
+				a {
+					font-weight: 400;
+					&:hover,
+					&:active {
+						color: g.$Orange;
+					}
 				}
 			}
 		}

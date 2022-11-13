@@ -18,19 +18,18 @@ main {
 				}
 			}
 			.right-container {
-				max-width: u.rem(600);
+				max-width: u.rem(700);
 			}
 			.right-container {
 				.pricing-cart {
-					margin-top: u.rem(20);
-					max-width: u.rem(500);
-					margin-inline: auto;
+					margin-top: u.rem(30);
 				}
 			}
 		}
 	}
 
 	.container {
+		height: 100%;
 		@include u.breakpoints(large) {
 			width: min(100% - u.rem(20), u.rem(1400));
 			margin-inline: auto;
@@ -88,6 +87,9 @@ main {
 		.right-container {
 			width: min(100% - u.rem(40), u.rem(800));
 			margin-inline: auto;
+			@include u.breakpoints(large) {
+				width: 100%;
+			}
 			.header {
 				margin-top: u.rem(16);
 				span {
@@ -106,6 +108,7 @@ main {
 					margin-top: 0;
 					h1 {
 						font-size: u.rem(45);
+						line-height: 1;
 					}
 				}
 			}
@@ -116,10 +119,12 @@ main {
 				margin-bottom: u.rem(24);
 				font-weight: 400;
 				@include u.breakpoints(large) {
-					margin-top: u.rem(25);
+					margin-top: u.rem(35);
 				}
 			}
 			.pricing-cart {
+				max-width: u.rem(400);
+				margin-inline: auto;
 				.pricing {
 					@include u.breakpoints(large) {
 						flex-direction: column;
@@ -154,6 +159,7 @@ main {
 				}
 				.add-cart {
 					margin-top: u.rem(30);
+
 					.range {
 						margin-bottom: u.rem(20);
 						background-color: g.$Light-grayish-blue;
@@ -177,13 +183,13 @@ main {
 						}
 					}
 					.button {
+						box-shadow: 0 u.rem(5) u.rem(10) u.rem(-2) g.$Orange;
+						transition: 0.2s ease-in;
+						&:hover {
+							opacity: 0.8;
+						}
 						@include u.breakpoints(large) {
 							margin: 0;
-							box-shadow: 0 u.rem(5) u.rem(10) u.rem(-2) g.$Orange;
-							transition: 0.2s ease-in;
-							&:hover {
-								opacity: 0.6;
-							}
 						}
 						@include u.flex;
 						justify-content: center;
@@ -220,7 +226,8 @@ main {
 		}
 	}
 	@include u.breakpoints(large) {
-		padding-top: u.rem(190);
+		padding-top: u.rem(140);
+
 		.container {
 			.left-container {
 				border-radius: u.rem(15);
@@ -238,12 +245,28 @@ main {
 					display: flex;
 					margin-block: u.rem(20);
 					gap: u.rem(20);
-					width: u.rem(450);
+
 					.thumb {
+						border-radius: u.rem(13);
+						border: u.rem(2) solid transparent;
+
+						overflow: hidden;
+						&:hover {
+							opacity: 0.5;
+							transition: opacity 0.4s ease-in;
+						}
 						border-radius: u.rem(15);
 						img {
-							border-radius: u.rem(15);
 							height: 100%;
+						}
+					}
+					.active {
+						border: u.rem(2) solid g.$Orange;
+						&:hover {
+							opacity: unset;
+						}
+						img {
+							opacity: 0.3;
 						}
 					}
 				}
