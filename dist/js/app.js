@@ -29,9 +29,11 @@ close_menu.addEventListener("click", () => {
 	mobile_navigation.classList.remove("show-nav");
 	nav_lightbox.classList.remove("show-lightbox");
 });
-nav_lightbox.addEventListener("click", () => {
-	mobile_navigation.classList.remove("show-nav");
-	nav_lightbox.classList.remove("show-lightbox");
+nav_lightbox.addEventListener("click", (e) => {
+	if (e.target.classList.contains("lightbox")) {
+		mobile_navigation.classList.remove("show-nav");
+		nav_lightbox.classList.remove("show-lightbox");
+	}
 });
 
 nav_links.forEach((nav, index) => {
