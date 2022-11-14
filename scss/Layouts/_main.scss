@@ -25,13 +25,10 @@ main {
 			}
 		}
 	}
-	@include u.breakpoints(large) {
-		place-content: center;
-	}
 
 	.container {
 		@include u.breakpoints(large) {
-			width: min(100% - u.rem(20), u.rem(1400));
+			width: min(100% - u.rem(20), u.rem(1000));
 			margin-inline: auto;
 			grid-template-columns: repeat(auto-fit, minmax(u.rem(300), 1fr));
 			gap: u.rem(120);
@@ -50,10 +47,13 @@ main {
 		margin-inline: unset;
 		width: 100%;
 		display: grid;
-		grid-template-columns: repeat(1fr);
+		grid-template-columns: 1fr;
 		.left-container {
 			background-size: cover;
 			.show-sneakers {
+				.showcase {
+					height: u.rem(350);
+				}
 				position: relative;
 				height: u.rem(350);
 				.sneaker {
@@ -91,7 +91,7 @@ main {
 				width: 100%;
 			}
 			.header {
-				margin-top: u.rem(16);
+				margin-top: u.rem(24);
 				span {
 					color: g.$Orange;
 					font-weight: 700;
@@ -234,8 +234,12 @@ main {
 				.show-sneakers {
 					width: 100%;
 					height: 100%;
-					.sneaker {
+					.showcase {
+						height: u.rem(450);
 						border-radius: u.rem(20);
+						.sneaker {
+							border-radius: u.rem(20);
+						}
 					}
 					.arrows {
 						display: none;
@@ -249,7 +253,6 @@ main {
 					.thumb {
 						border-radius: u.rem(13);
 						border: u.rem(2) solid transparent;
-
 						overflow: hidden;
 						&:hover {
 							opacity: 0.5;

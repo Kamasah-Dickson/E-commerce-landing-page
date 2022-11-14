@@ -100,8 +100,102 @@ header .container .user-details {
   flex-grow: 1;
   gap: 1.0625rem;
 }
-header .container .user-details .checkout {
-  display: none;
+header .container .user-details .cart .checkout {
+  cursor: default;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  position: absolute;
+  top: 4.875rem;
+  right: 0;
+  left: 0;
+  background-color: hsl(0deg, 0%, 100%);
+  box-shadow: 0.0625rem 0.625rem 1.25rem -0.0625rem rgba(0, 0, 0, 0.2);
+  border-radius: 0.5rem;
+  z-index: 2;
+  width: min(100% - 1.25rem, 28.75rem);
+  margin-inline: auto;
+}
+@media (min-width: 56.25rem) {
+  header .container .user-details .cart .checkout {
+    left: unset;
+  }
+}
+header .container .user-details .cart .checkout h3 {
+  display: block;
+  font-size: 0.9375rem;
+  width: 100%;
+  padding: 1.5625rem;
+  position: relative;
+}
+header .container .user-details .cart .checkout h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.0625rem;
+  background-color: hsl(219deg, 9%, 45%);
+  opacity: 0.2;
+}
+header .container .user-details .cart .checkout .items {
+  width: 100%;
+  padding: 1.5625rem;
+}
+header .container .user-details .cart .checkout .items .sneaker-checkout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.3125rem;
+}
+header .container .user-details .cart .checkout .items .sneaker-checkout .sneaker-img {
+  width: 3.125rem;
+  border-radius: 0.3125rem;
+}
+header .container .user-details .cart .checkout .items .sneaker-checkout .sneaker-img img {
+  border-radius: 0.3125rem;
+}
+header .container .user-details .cart .checkout .items .sneaker-checkout .details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4375rem;
+}
+header .container .user-details .cart .checkout .items .sneaker-checkout .details p {
+  font-weight: 400;
+  color: hsl(219deg, 9%, 45%);
+}
+header .container .user-details .cart .checkout .items .sneaker-checkout .details p span {
+  color: hsla(0deg, 0%, 0%, 0.774);
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+header .container .user-details .cart .checkout .items .sneaker-checkout .delete {
+  width: 0.875rem;
+  cursor: pointer;
+}
+header .container .user-details .cart .checkout .items button {
+  display: block;
+  width: 100%;
+  text-transform: capitalize;
+  margin-top: 1.4375rem;
+  margin-bottom: 0.3125rem;
+  border: none;
+  padding: 1.25rem;
+  background-color: hsl(26deg, 100%, 55%);
+  color: hsl(0deg, 0%, 100%);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  transition: 0.3s ease;
+}
+header .container .user-details .cart .checkout .items button:hover {
+  opacity: 0.8;
+  transition: 0.3s ease;
 }
 header .container .user-details .user {
   width: 1.5625rem;
@@ -167,9 +261,7 @@ header .container .user-details .user:hover {
 @media (min-width: 56.25rem) {
   .active-scroll {
     padding-block: 0.625rem;
-    -webkit-backdrop-filter: blur(4px);
-            backdrop-filter: blur(4px);
-    background-color: rgba(255, 255, 255, 0.685);
+    background-color: rgba(255, 255, 255, 0.774);
   }
   .active-scroll .container:after {
     display: none;
@@ -204,20 +296,15 @@ main {
     margin-top: 1.875rem;
   }
 }
-@media (min-width: 56.25rem) {
-  main {
-    place-content: center;
-  }
-}
 main .container {
   margin-inline: unset;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(1fr);
+  grid-template-columns: 1fr;
 }
 @media (min-width: 56.25rem) {
   main .container {
-    width: min(100% - 1.25rem, 87.5rem);
+    width: min(100% - 1.25rem, 62.5rem);
     margin-inline: auto;
     grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
     gap: 7.5rem;
@@ -237,6 +324,9 @@ main .container .left-container {
 }
 main .container .left-container .show-sneakers {
   position: relative;
+  height: 21.875rem;
+}
+main .container .left-container .show-sneakers .showcase {
   height: 21.875rem;
 }
 main .container .left-container .show-sneakers .sneaker {
@@ -278,7 +368,7 @@ main .container .right-container {
   }
 }
 main .container .right-container .header {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 }
 main .container .right-container .header span {
   color: hsl(26deg, 100%, 55%);
@@ -436,7 +526,11 @@ main .container .right-container .pricing-cart .add-cart .button p {
     width: 100%;
     height: 100%;
   }
-  main .container .left-container .show-sneakers .sneaker {
+  main .container .left-container .show-sneakers .showcase {
+    height: 28.125rem;
+    border-radius: 1.25rem;
+  }
+  main .container .left-container .show-sneakers .showcase .sneaker {
     border-radius: 1.25rem;
   }
   main .container .left-container .show-sneakers .arrows {

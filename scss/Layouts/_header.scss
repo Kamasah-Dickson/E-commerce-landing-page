@@ -45,8 +45,98 @@ header {
 			justify-content: flex-end;
 			flex-grow: 1;
 			gap: u.rem(17);
-			.checkout {
-				display: none;
+
+			.cart {
+				.checkout {
+					cursor: default;
+					@include u.flex;
+					flex-direction: column;
+					position: absolute;
+					top: u.rem(78);
+					right: 0;
+					left: 0;
+					background-color: g.$White;
+					box-shadow: u.rem(1) u.rem(10) u.rem(20) u.rem(-1) rgba(0, 0, 0, 0.2);
+					border-radius: u.rem(8);
+					z-index: 2;
+					width: min(100% - u.rem(20), u.rem(460));
+					margin-inline: auto;
+					@include u.breakpoints(large) {
+						left: unset;
+					}
+					h3 {
+						display: block;
+						font-size: u.rem(15);
+						width: 100%;
+						padding: u.rem(25);
+						position: relative;
+						&::after {
+							content: "";
+							position: absolute;
+							bottom: 0;
+							left: 0;
+							width: 100%;
+							height: u.rem(1);
+							background-color: g.$Dark-grayish-blue;
+							opacity: 0.2;
+						}
+					}
+					.items {
+						width: 100%;
+						padding: u.rem(25);
+						.sneaker-checkout {
+							@include u.flex;
+							gap: u.rem(5);
+							.sneaker-img {
+								width: u.rem(50);
+								border-radius: u.rem(5);
+								img {
+									border-radius: u.rem(5);
+								}
+							}
+							.details {
+								@include u.flex;
+								flex-direction: column;
+								align-items: flex-start;
+								gap: u.rem(7);
+								p {
+									font-weight: 400;
+									color: g.$Dark-grayish-blue;
+									span {
+										color: g.$Black;
+										font-weight: 700;
+										font-size: u.rem(18);
+									}
+								}
+							}
+
+							.delete {
+								width: u.rem(14);
+								cursor: pointer;
+							}
+						}
+						button {
+							display: block;
+							width: 100%;
+							text-transform: capitalize;
+							margin-top: u.rem(23);
+							margin-bottom: u.rem(5);
+							border: none;
+							padding: u.rem(20);
+							background-color: g.$Orange;
+							color: g.$White;
+							border-radius: u.rem(8);
+							cursor: pointer;
+							font-size: u.rem(15);
+							font-weight: 700;
+							transition: 0.3s ease;
+							&:hover {
+								opacity: 0.8;
+								transition: 0.3s ease;
+							}
+						}
+					}
+				}
 			}
 			.user {
 				width: u.rem(25);
@@ -117,8 +207,7 @@ header {
 @include u.breakpoints(large) {
 	.active-scroll {
 		padding-block: u.rem(10);
-		backdrop-filter: blur(4px);
-		background-color: rgba(255, 255, 255, 0.685);
+		background-color: rgba(255, 255, 255, 0.774);
 		.container {
 			&:after {
 				display: none;
