@@ -101,21 +101,32 @@ header .container .user-details {
   gap: 1.0625rem;
 }
 header .container .user-details .cart .checkout {
+  opacity: 0;
+  visibility: hidden;
+  height: 15.625rem;
   cursor: default;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
   position: absolute;
-  top: 4.875rem;
+  top: 4.375rem;
   right: 0;
   left: 0;
   background-color: hsl(0deg, 0%, 100%);
-  box-shadow: 0.0625rem 0.625rem 1.25rem -0.0625rem rgba(0, 0, 0, 0.2);
+  box-shadow: 0.0625rem 0.4375rem 0.9375rem -0.0625rem rgba(0, 0, 0, 0.2);
   border-radius: 0.5rem;
   z-index: 2;
   width: min(100% - 1.25rem, 28.75rem);
   margin-inline: auto;
+}
+header .container .user-details .cart .checkout .items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 3.125rem;
 }
 @media (min-width: 56.25rem) {
   header .container .user-details .cart .checkout {
@@ -138,6 +149,13 @@ header .container .user-details .cart .checkout h3::after {
   height: 0.0625rem;
   background-color: hsl(219deg, 9%, 45%);
   opacity: 0.2;
+}
+header .container .user-details .cart .checkout h2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  justify-content: center;
+  height: 100%;
 }
 header .container .user-details .cart .checkout .items {
   width: 100%;
@@ -196,6 +214,42 @@ header .container .user-details .cart .checkout .items button {
 header .container .user-details .cart .checkout .items button:hover {
   opacity: 0.8;
   transition: 0.3s ease;
+}
+header .container .user-details .cart .show {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.25s ease;
+  height: 18.75rem;
+}
+header .container .user-details .cart .scroll {
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+header .container .user-details .cart .scroll::-webkit-scrollbar {
+  width: 0.0625rem;
+}
+header .container .user-details .cart .scroll::-webkit-scrollbar-track {
+  background-color: hsl(220deg, 14%, 75%);
+}
+header .container .user-details .cart .scroll::-webkit-scrollbar-thumb {
+  background-color: hsl(26deg, 100%, 55%);
+  border-radius: 0.375rem;
+}
+header .container .user-details .before:before {
+  content: attr(data-count);
+  text-align: center;
+  font-size: 0.8125rem;
+  color: hsl(0deg, 0%, 100%);
+  position: relative;
+  display: grid;
+  place-content: center;
+  top: 0.5625rem;
+  left: 0.625rem;
+  width: 0.8125rem;
+  padding-inline: 0.75rem;
+  border-radius: 0.625rem;
+  height: 1.0625rem;
+  background-color: hsl(26deg, 100%, 55%);
 }
 header .container .user-details .user {
   width: 1.5625rem;
@@ -261,7 +315,12 @@ header .container .user-details .user:hover {
 @media (min-width: 56.25rem) {
   .active-scroll {
     padding-block: 0.625rem;
-    background-color: rgba(255, 255, 255, 0.774);
+    -webkit-backdrop-filter: blur(7px);
+            backdrop-filter: blur(7px);
+    background-color: rgba(238, 224, 224, 0.13);
+  }
+  .active-scroll .container .nav-links li a {
+    color: hsl(220deg, 13%, 13%);
   }
   .active-scroll .container:after {
     display: none;
@@ -527,7 +586,7 @@ main .container .right-container .pricing-cart .add-cart .button p {
     height: 100%;
   }
   main .container .left-container .show-sneakers .showcase {
-    height: 28.125rem;
+    height: 27.5rem;
     border-radius: 1.25rem;
   }
   main .container .left-container .show-sneakers .showcase .sneaker {

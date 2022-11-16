@@ -48,15 +48,25 @@ header {
 
 			.cart {
 				.checkout {
+					.items {
+						@include u.flex;
+						flex-direction: column;
+						align-items: stretch;
+						gap: u.rem(50);
+					}
+					opacity: 0;
+					visibility: hidden;
+					height: u.rem(250);
+
 					cursor: default;
 					@include u.flex;
 					flex-direction: column;
 					position: absolute;
-					top: u.rem(78);
+					top: u.rem(70);
 					right: 0;
 					left: 0;
 					background-color: g.$White;
-					box-shadow: u.rem(1) u.rem(10) u.rem(20) u.rem(-1) rgba(0, 0, 0, 0.2);
+					box-shadow: u.rem(1) u.rem(7) u.rem(15) u.rem(-1) rgba(0, 0, 0, 0.2);
 					border-radius: u.rem(8);
 					z-index: 2;
 					width: min(100% - u.rem(20), u.rem(460));
@@ -80,6 +90,11 @@ header {
 							background-color: g.$Dark-grayish-blue;
 							opacity: 0.2;
 						}
+					}
+					h2 {
+						@include u.flex;
+						justify-content: center;
+						height: 100%;
 					}
 					.items {
 						width: 100%;
@@ -136,6 +151,45 @@ header {
 							}
 						}
 					}
+				}
+				.show {
+					visibility: visible;
+					opacity: 1;
+					transition: opacity 0.25s ease;
+					height: u.rem(300);
+				}
+				.scroll {
+					overflow-y: scroll;
+					scroll-behavior: smooth;
+					&::-webkit-scrollbar {
+						width: u.rem(1);
+					}
+					&::-webkit-scrollbar-track {
+						background-color: g.$Grayish-blue;
+					}
+					&::-webkit-scrollbar-thumb {
+						background-color: g.$Orange;
+						border-radius: u.rem(6);
+					}
+				}
+			}
+			.before {
+				&:before {
+					content: attr(data-count);
+					text-align: center;
+					font-size: u.rem(13);
+					color: g.$White;
+					position: relative;
+					display: grid;
+					place-content: center;
+					top: u.rem(9);
+					left: u.rem(10);
+					width: u.rem(13);
+					padding-inline: u.rem(12);
+					border-radius: u.rem(10);
+					height: u.rem(17);
+					background-color: g.$Orange;
+					// display: none;
 				}
 			}
 			.user {
@@ -207,8 +261,16 @@ header {
 @include u.breakpoints(large) {
 	.active-scroll {
 		padding-block: u.rem(10);
-		background-color: rgba(255, 255, 255, 0.774);
+		backdrop-filter: blur(7px);
+		background-color: rgba(238, 224, 224, 0.13);
 		.container {
+			.nav-links {
+				li {
+					a {
+						color: g.$Very-vark-blue;
+					}
+				}
+			}
 			&:after {
 				display: none;
 			}
