@@ -73,10 +73,6 @@ main {
 					user-select: none;
 					-webkit-user-drag: none;
 					-webkit-tap-highlight-color: transparent;
-					&:focus-visible,
-					&:focus {
-						outline: none;
-					}
 					@include u.flex;
 					.next,
 					.prev {
