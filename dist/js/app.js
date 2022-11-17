@@ -64,14 +64,6 @@ sneaker_container.addEventListener("click", (e) => {
 	sessionStorage.setItem("data", JSON.stringify(trackData));
 });
 
-function shoeReview() {
-	const data = JSON.parse(sessionStorage.getItem("active")) || [0];
-	main_review.setAttribute("data-index", data);
-	sneakers[data].classList.add("active");
-	main_review.src = sneakers[data].querySelector(".sneaker").src;
-	sessionStorage.setItem("active", data);
-}
-
 let index = JSON.parse(sessionStorage.getItem("active"));
 main_review.setAttribute("data-index", index);
 
@@ -95,6 +87,13 @@ document.querySelectorAll(".thumb img").forEach((img, index) => {
 });
 
 const sneakers = document.querySelectorAll(".thumb");
+function shoeReview() {
+	const data = JSON.parse(sessionStorage.getItem("active")) || [0];
+	main_review.setAttribute("data-index", data);
+	sneakers[data].classList.add("active");
+	main_review.src = sneakers[data].querySelector(".sneaker").src;
+	sessionStorage.setItem("active", data);
+}
 
 sneakers.forEach((sneaker) => {
 	sneaker.addEventListener("click", () => {
@@ -182,8 +181,8 @@ function updateCounter() {
 
 const items = document.createElement("div");
 items.className = "items";
+checkOut.appendChild(items);
 function createCart() {
-	checkOut.appendChild(items);
 	if (cart.length !== 0) {
 		checkOut.classList.add("scroll");
 		checkOut.querySelector("h2").style.display = "none";
@@ -191,6 +190,7 @@ function createCart() {
 			.map((cartData, index) => {
 				let search =
 					cart.find((data) => data.sneaker === cartData.sneaker) || [];
+
 				let img = search.sneaker;
 				let { items } = search;
 				let price = 120.0;
@@ -218,7 +218,6 @@ function createCart() {
 			.join("");
 	} else {
 		checkOut.querySelector("h2").style.display = "flex";
-		items.style.display = "none";
 	}
 }
 document.querySelector(".checkout").addEventListener("click", (e) => {
@@ -236,6 +235,8 @@ checkoutBtn.addEventListener("click", () => {
 	if (counter.textContent == 0) {
 		return;
 	} else {
+		createCart();
+
 		updateCartInStorage();
 		if (cart.length >= 0) {
 			cartIcon.parentElement.dataset.count = cart.length;
@@ -276,7 +277,7 @@ function decrement(counter) {
 
 function updateCartInStorage() {
 	let addTocart = cart.find((data) => {
-		return data.sneaker === img;
+		return data.sneaker === main_review.src.slice(21);
 	});
 	if (addTocart === undefined) {
 		cart.push({
@@ -286,7 +287,7 @@ function updateCartInStorage() {
 		});
 		createCart();
 	} else {
-		addTocart.sneaker = main_review.src;
+		addTocart.sneaker = main_review.src.slice(21);
 		addTocart.items = counter.textContent;
 		addTocart.index = main_review.dataset.index;
 	}
@@ -313,22 +314,7 @@ closeBtn.addEventListener("click", () => {
 	lightbox.classList.add("hide");
 });
 
-const thumnails = [
-	{
-		img: "./images/image-product-1-thumbnail.jpg",
-	},
-	{
-		img: "./images/image-product-2-thumbnail.jpg",
-	},
-	{
-		img: "./images/image-product-3-thumbnail.jpg",
-	},
-	{
-		img: "./images/image-product-4-thumbnail.jpg",
-	},
-];
-
-showSneakers.innerHTML = thumnails
+showSneakers.innerHTML = showcase
 	.map((data, index) => {
 		let { img } = data;
 		return `
@@ -339,15 +325,33 @@ showSneakers.innerHTML = thumnails
 	.join("");
 
 showShoes.innerHTML = showcase
-	.map((shoes) => {
+	.map((shoes, index) => {
 		let { img } = shoes;
 		return `
-		<div class ="slider">
+		<div class ="slider" data-index="${index}">
 		<img src="${img}" alt="sneakers"class="sneaker">
 		</div>
 		`;
 	})
 	.join("");
+
+const setActiveSlider = document.querySelectorAll(".the-sneaker");
+
+// sgdgsadfsdfsdfsdf/
+
+setActiveSlider.forEach((slide, index) => {
+	slide.addEventListener("click", () => {
+		setActiveSlider.forEach((slide) => {
+			slide.classList.remove("active");
+		});
+		setActiveSlider[index].classList.add("active");
+		let hasActive = setActiveSlider[index].querySelector("img");
+		const setLightboxImg = document.querySelector(
+			".desktop-showcase .slider img"
+		);
+		setLightboxImg.src = `${hasActive.src}`;
+	});
+});
 
 let sliderWidth = slider.clientWidth; //450
 
@@ -362,6 +366,13 @@ next.addEventListener("click", () => {
 		sliderIndex += 1;
 	}
 	slider.style.transform = `translateX(-${sliderWidth * sliderIndex}px)`;
+	showShoes.setAttribute("data-index", sliderIndex);
+	let boxIndex = showShoes.dataset.index;
+
+	setActiveSlider.forEach((slide) => {
+		slide.classList.remove("active");
+		setActiveSlider[boxIndex].classList.add("active");
+	});
 });
 
 prev.addEventListener("click", () => {
@@ -373,4 +384,11 @@ prev.addEventListener("click", () => {
 		sliderIndex -= 1;
 	}
 	slider.style.transform = `translateX(${sliderWidth * sliderIndex}px)`;
+	showShoes.setAttribute("data-index", sliderIndex);
+	let boxIndex = showShoes.dataset.index;
+
+	setActiveSlider.forEach((slide) => {
+		slide.classList.remove("active");
+		setActiveSlider[boxIndex].classList.add("active");
+	});
 });

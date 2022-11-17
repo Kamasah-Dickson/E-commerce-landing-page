@@ -158,6 +158,8 @@ header .container .user-details .cart .checkout h3::after {
   opacity: 0.2;
 }
 header .container .user-details .cart .checkout h2 {
+  font-size: 1.25rem;
+  color: hsl(220deg, 13%, 13%);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -806,6 +808,7 @@ main .container .right-container .pricing-cart .add-cart .button p {
   max-width: 25rem;
   margin-inline: auto;
   height: 4.375rem;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -813,6 +816,24 @@ main .container .right-container .pricing-cart .add-cart .button p {
 .desktop-lightbox .main .sneak-peak .the-sneaker {
   border-radius: 0.5rem;
   overflow: hidden;
+  border-radius: 0.8125rem;
+  border: 0.125rem solid transparent;
+  overflow: hidden;
+  border-radius: 0.8125rem;
+}
+.desktop-lightbox .main .sneak-peak .the-sneaker:hover {
+  opacity: 0.9;
+  transition: opacity 0.4s ease-in;
+}
+.desktop-lightbox .main .sneak-peak .the-sneaker img {
+  height: 100%;
+}
+.desktop-lightbox .main .sneak-peak .active {
+  border: 0.125rem solid hsl(26deg, 100%, 55%);
+  background-color: rgba(255, 255, 255, 0.651);
+}
+.desktop-lightbox .main .sneak-peak .active img {
+  opacity: 0.3;
 }
 
 .hide {

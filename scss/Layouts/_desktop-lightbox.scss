@@ -88,10 +88,29 @@
 			max-width: u.rem(400);
 			margin-inline: auto;
 			height: u.rem(70);
+			z-index: 10;
 			@include u.flex;
 			.the-sneaker {
 				border-radius: u.rem(8);
 				overflow: hidden;
+				border-radius: u.rem(13);
+				border: u.rem(2) solid transparent;
+				overflow: hidden;
+				&:hover {
+					opacity: 0.9;
+					transition: opacity 0.4s ease-in;
+				}
+				border-radius: u.rem(13);
+				img {
+					height: 100%;
+				}
+			}
+			.active {
+				border: u.rem(2) solid g.$Orange;
+				background-color: rgba(255, 255, 255, 0.651);
+				img {
+					opacity: 0.3;
+				}
 			}
 		}
 	}

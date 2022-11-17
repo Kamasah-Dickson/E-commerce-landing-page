@@ -92,6 +92,8 @@ header {
 						}
 					}
 					h2 {
+						font-size: u.rem(20);
+						color: g.$Very-vark-blue;
 						@include u.flex;
 						justify-content: center;
 						height: 100%;
