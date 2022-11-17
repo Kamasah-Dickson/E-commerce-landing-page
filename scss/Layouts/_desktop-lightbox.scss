@@ -1,0 +1,101 @@
+@use "../utilities/" as u;
+@use "../global/" as g;
+
+.desktop-lightbox {
+	transition: 0.3s ease;
+	background-color: hsla(0, 0%, 0%, 0.76);
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 99;
+	@include u.flex;
+	flex-direction: column;
+	justify-content: center;
+	.main {
+		display: grid;
+		place-content: center;
+		height: 100%;
+		width: u.rem(480);
+		position: relative;
+		.arrows {
+			position: absolute;
+			top: u.rem(-16);
+			left: 0;
+			height: 100%;
+			width: 100%;
+			@include u.flex;
+			.prev,
+			.next {
+				cursor: pointer;
+				background-color: #fff;
+				padding: u.rem(10);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-radius: 100%;
+				img {
+					width: u.rem(15);
+					height: u.rem(15);
+					aspect-ratio: 1/1;
+				}
+			}
+		}
+		.close {
+			width: u.rem(17);
+			margin-left: auto;
+			margin-bottom: u.rem(20);
+			cursor: pointer;
+			position: relative;
+			z-index: 99;
+		}
+		height: 100%;
+		.show-sneakers {
+			max-width: u.rem(450);
+			height: auto;
+			position: relative;
+			border-radius: u.rem(10);
+			overflow: hidden;
+
+			.desktop-showcase {
+				width: u.rem(450);
+				height: u.rem(400);
+				border-radius: u.rem(0);
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				transition: transform 0.3s ease;
+				.slider {
+					width: u.rem(450);
+					height: u.rem(400);
+					img {
+						height: 100%;
+						width: 100%;
+					}
+				}
+				.sneaker {
+					border-radius: u.rem(0);
+				}
+			}
+		}
+		.sneak-peak {
+			margin-top: u.rem(30);
+			gap: u.rem(15);
+			max-width: u.rem(400);
+			margin-inline: auto;
+			height: u.rem(70);
+			@include u.flex;
+			.the-sneaker {
+				border-radius: u.rem(8);
+				overflow: hidden;
+			}
+		}
+	}
+}
+
+.hide {
+	visibility: hidden;
+	opacity: 0;
+	transition: 0.2s ease;
+}

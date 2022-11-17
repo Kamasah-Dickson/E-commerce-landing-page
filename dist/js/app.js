@@ -12,12 +12,13 @@ const cartIcon = document.querySelector(".cart img");
 const checkOut = document.querySelector(".checkout");
 const checkoutBtn = document.querySelector(".button");
 
-const cart = JSON.parse(localStorage.getItem("cart")) || []; //checkout cart
-const trackData = JSON.parse(localStorage.getItem("data")) || [];
+const cart = JSON.parse(sessionStorage.getItem("cart")) || []; //checkout cart
+const trackData = JSON.parse(sessionStorage.getItem("data")) || [];
 
 window.addEventListener("DOMContentLoaded", () => {
 	shoeReview();
 	createCart();
+	updateCounter();
 });
 
 const showcase = [
@@ -62,18 +63,18 @@ sneaker_container.addEventListener("click", (e) => {
 		results.id = ImgID;
 		results.img = img;
 	}
-	localStorage.setItem("data", JSON.stringify(trackData));
+	sessionStorage.setItem("data", JSON.stringify(trackData));
 });
 
 function shoeReview() {
-	const data = JSON.parse(localStorage.getItem("active")) || [0];
+	const data = JSON.parse(sessionStorage.getItem("active")) || [0];
 	main_review.setAttribute("data-index", data);
 	sneakers[data].classList.add("active");
 	main_review.src = sneakers[data].querySelector(".sneaker").src;
-	localStorage.setItem("active", data);
+	sessionStorage.setItem("active", data);
 }
 
-let index = JSON.parse(localStorage.getItem("active"));
+let index = JSON.parse(sessionStorage.getItem("active"));
 main_review.setAttribute("data-index", index);
 
 function generateShoe() {
@@ -105,7 +106,7 @@ sneakers.forEach((sneaker) => {
 			sneaker.classList.remove("active");
 		});
 		sneakers[data].classList.add("active");
-		localStorage.setItem("active", data);
+		sessionStorage.setItem("active", data);
 	});
 });
 
@@ -156,6 +157,10 @@ cartIcon.addEventListener("click", () => {
 	}
 });
 
+document.querySelector("main").addEventListener("click", () => {
+	checkOut.classList.remove("show");
+});
+
 let counter = document.querySelector(".count");
 let count = 0;
 range.addEventListener("click", (e) => {
@@ -165,6 +170,15 @@ range.addEventListener("click", (e) => {
 		decrement(counter);
 	}
 });
+
+function updateCounter() {
+	if (cart.length > 0) {
+		cartIcon.parentElement.classList.add("before");
+		cartIcon.parentElement.dataset.count = cart.length;
+	} else {
+		cartIcon.parentElement.classList.remove("before");
+	}
+}
 
 // =============================
 
@@ -190,10 +204,18 @@ function createCart() {
 		checkOut.classList.add("scroll");
 		checkOut.querySelector("h2").style.display = "none";
 		items.innerHTML = cart
+
+			// =========please fix me======================================
+			//map creates i want to get the cart data from localStorage and map then onto the
+			//cart modal but it seems the map create duplicate data;
+			// =========please fix me======================================
 			.map((cartData) => {
-				let search = cart.find((data) => data.index === cartData.index) || [];
+				let search =
+					cart.find((data) => data.index === main_review.dataset.index) || [];
 				let img = search.sneaker.slice(21);
 				let { index, items } = search;
+				let price = 120.0;
+				let total = items * price;
 				return `
 				<div class="wrapper" data-index="${index}">
 				
@@ -204,7 +226,7 @@ function createCart() {
 				<div class="details">
 				<p>Fall Limited Edition Sneakers...</p>
 				<p>
-					$120.00 X ${items} <span>$375.00</span>
+					$${price} X ${items} <span>$${total}</span>
 				</p>
 				</div>
 				<img src="./images/icon-delete.svg" alt="delete" class="delete" data-index="${index}" />
@@ -215,24 +237,23 @@ function createCart() {
 	`;
 			})
 			.join("");
-
-		document.querySelectorAll(".items").forEach((items) => {
-			items.addEventListener("click", (e) => {
-				e.stopImmediatePropagation();
-				if (e.target.classList.value == "delete") {
-					e.target.closest(".items").remove();
-					deleteFromStorage(e.target);
-					cartIcon.parentElement.dataset.count = cart.length;
-					if (cartIcon.parentElement.dataset.count == 0) {
-						cartIcon.parentElement.classList.remove("before");
-					}
-				}
-			});
-		});
 	} else {
 		checkOut.querySelector("h2").style.display = "flex";
 		items.style.display = "none";
 	}
+	document.querySelectorAll(".items").forEach((items) => {
+		items.addEventListener("click", (e) => {
+			e.stopImmediatePropagation();
+			if (e.target.classList.value == "delete") {
+				e.target.closest(".items").remove();
+				deleteFromStorage(e.target);
+				cartIcon.parentElement.dataset.count = cart.length;
+				if (cartIcon.parentElement.dataset.count == 0) {
+					cartIcon.parentElement.classList.remove("before");
+				}
+			}
+		});
+	});
 }
 // =======================================
 
@@ -245,7 +266,7 @@ function deleteFromStorage(btn) {
 		if (cart.length == 0) {
 			checkOut.querySelector("h2").style.display = "flex";
 		}
-		localStorage.setItem("cart", JSON.stringify(cart));
+		sessionStorage.setItem("cart", JSON.stringify(cart));
 	}
 }
 
@@ -279,5 +300,86 @@ function updateCartInStorage() {
 		addTocart.index = main_review.dataset.index;
 	}
 
-	localStorage.setItem("cart", JSON.stringify(cart));
+	sessionStorage.setItem("cart", JSON.stringify(cart));
 }
+
+// ================Desktop-lightbox====================
+
+const showSneakers = document.querySelector(".sneak-peak");
+const showShoes = document.querySelector(".desktop-showcase");
+const lightbox = document.querySelector(".desktop-lightbox");
+const prev = document.querySelector(".desktop-arrows .prev");
+const next = document.querySelector(".desktop-arrows .next");
+const slider = document.querySelector(".desktop-showcase");
+const closeBtn = document.querySelector(".close-box");
+const showcaseContainer = document.querySelector(".showcase");
+
+showcaseContainer.addEventListener("click", () => {
+	lightbox.classList.remove("hide");
+});
+
+closeBtn.addEventListener("click", () => {
+	lightbox.classList.add("hide");
+});
+
+const thumnails = [
+	{
+		img: "./images/image-product-1-thumbnail.jpg",
+	},
+	{
+		img: "./images/image-product-2-thumbnail.jpg",
+	},
+	{
+		img: "./images/image-product-3-thumbnail.jpg",
+	},
+	{
+		img: "./images/image-product-4-thumbnail.jpg",
+	},
+];
+
+showSneakers.innerHTML = thumnails
+	.map((data, index) => {
+		let { img } = data;
+		return `
+	<div class="the-sneaker">
+	<img src="${img}" alt="" data-index="${index}">
+	</div>`;
+	})
+	.join("");
+
+showShoes.innerHTML = showcase
+	.map((shoes) => {
+		let { img } = shoes;
+		return `
+		<div class ="slider">
+		<img src="${img}" alt="sneakers"class="sneaker">
+		</div>
+		`;
+	})
+	.join("");
+
+let sliderWidth = slider.clientWidth; //450
+
+let sliderIndex = 0;
+
+next.addEventListener("click", () => {
+	if (sliderIndex === 3) {
+		sliderIndex = 0;
+		sliderWidth = 0;
+	} else {
+		sliderWidth = 450;
+		sliderIndex += 1;
+	}
+	slider.style.transform = `translateX(-${sliderWidth * sliderIndex}px)`;
+});
+
+prev.addEventListener("click", () => {
+	if (sliderIndex === 0) {
+		sliderIndex = 3;
+		sliderWidth = -450;
+	} else {
+		sliderWidth = -450;
+		sliderIndex -= 1;
+	}
+	slider.style.transform = `translateX(${sliderWidth * sliderIndex}px)`;
+});
