@@ -182,36 +182,18 @@ function updateCounter() {
 
 // =============================
 
-checkoutBtn.addEventListener("click", () => {
-	if (counter.textContent == 0) {
-		return;
-	} else {
-		updateCartInStorage();
-		if (cart.length >= 0) {
-			cartIcon.parentElement.dataset.count = cart.length;
-			cartIcon.parentElement.classList.add("before");
-		} else {
-			cartIcon.parentElement.classList.remove("before");
-		}
-	}
-});
-
+const items = document.createElement("div");
+items.className = "items";
+checkOut.appendChild(items);
 function createCart() {
-	const items = document.createElement("div");
-	items.className = "items";
-	checkOut.appendChild(items);
 	if (cart.length !== 0) {
 		checkOut.classList.add("scroll");
 		checkOut.querySelector("h2").style.display = "none";
 		items.innerHTML = cart
-
-			// =========please fix me======================================
-			//map creates i want to get the cart data from localStorage and map then onto the
-			//cart modal but it seems the map create duplicate data;
 			// =========please fix me======================================
 			.map((cartData) => {
 				let search =
-					cart.find((data) => data.index === main_review.dataset.index) || [];
+					cart.find((data) => data.items === counter.textContent) || [];
 				let img = search.sneaker.slice(21);
 				let { index, items } = search;
 				let price = 120.0;
@@ -245,7 +227,7 @@ function createCart() {
 		items.addEventListener("click", (e) => {
 			e.stopImmediatePropagation();
 			if (e.target.classList.value == "delete") {
-				e.target.closest(".items").remove();
+				e.target.parentElement.parentElement.remove();
 				deleteFromStorage(e.target);
 				cartIcon.parentElement.dataset.count = cart.length;
 				if (cartIcon.parentElement.dataset.count == 0) {
@@ -255,6 +237,21 @@ function createCart() {
 		});
 	});
 }
+
+checkoutBtn.addEventListener("click", () => {
+	if (counter.textContent == 0) {
+		return;
+	} else {
+		updateCartInStorage();
+		if (cart.length >= 0) {
+			cartIcon.parentElement.dataset.count = cart.length;
+			cartIcon.parentElement.classList.add("before");
+		} else {
+			cartIcon.parentElement.classList.remove("before");
+		}
+	}
+});
+
 // =======================================
 
 function deleteFromStorage(btn) {
