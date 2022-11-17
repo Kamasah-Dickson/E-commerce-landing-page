@@ -39,14 +39,14 @@ const showcase = [
 		img: "./images/image-product-4.jpg",
 	},
 ];
-
 sneaker_container.addEventListener("click", (e) => {
 	let ImgID = parseInt(e.target.id);
+	img = e.target.getAttribute("src");
 	let shoeIndex = main_review.setAttribute(
 		"data-index",
 		e.target.dataset.index
 	);
-	main_review.setAttribute("src", e.target.src);
+	main_review.src = img;
 
 	let results = trackData.find((data) => {
 		return data.id === ImgID;
@@ -54,12 +54,12 @@ sneaker_container.addEventListener("click", (e) => {
 	if (results === undefined) {
 		trackData.push({
 			id: ImgID,
-			img: main_review.slice(21),
+			img: img,
 			index: shoeIndex,
 		});
 	} else {
 		results.id = ImgID;
-		results.img = main_review.src;
+		results.img = img;
 	}
 	sessionStorage.setItem("data", JSON.stringify(trackData));
 });
@@ -182,17 +182,16 @@ function updateCounter() {
 
 const items = document.createElement("div");
 items.className = "items";
-checkOut.appendChild(items);
 function createCart() {
+	checkOut.appendChild(items);
 	if (cart.length !== 0) {
 		checkOut.classList.add("scroll");
 		checkOut.querySelector("h2").style.display = "none";
 		items.innerHTML = cart
-			// =========please fix me======================================
 			.map((cartData, index) => {
 				let search =
 					cart.find((data) => data.sneaker === cartData.sneaker) || [];
-				let img = search.sneaker.slice(21);
+				let img = search.sneaker;
 				let { items } = search;
 				let price = 120.0;
 				let total = items * price;
@@ -222,17 +221,15 @@ function createCart() {
 		items.style.display = "none";
 	}
 }
-document.querySelectorAll(".items").forEach((items) => {
-	items.addEventListener("click", (e) => {
-		if (e.target.classList.value == "delete") {
-			e.target.parentElement.parentElement.remove();
-			deleteFromStorage(e.target);
-			cartIcon.parentElement.dataset.count = cart.length;
-			if (cartIcon.parentElement.dataset.count == 0) {
-				cartIcon.parentElement.classList.remove("before");
-			}
+document.querySelector(".checkout").addEventListener("click", (e) => {
+	if (e.target.classList.value == "delete") {
+		e.target.parentElement.parentElement.remove();
+		deleteFromStorage(e.target.dataset.index);
+		cartIcon.parentElement.dataset.count = cart.length;
+		if (cartIcon.parentElement.dataset.count == 0) {
+			cartIcon.parentElement.classList.remove("before");
 		}
-	});
+	}
 });
 
 checkoutBtn.addEventListener("click", () => {
@@ -252,7 +249,7 @@ checkoutBtn.addEventListener("click", () => {
 // =======================================
 
 function deleteFromStorage(btn) {
-	let search = cart.find((data) => data.index === btn.dataset.index) || [];
+	let search = cart.find((data) => data.index === btn) || [];
 	if (search === undefined) {
 		return;
 	} else {
@@ -279,11 +276,11 @@ function decrement(counter) {
 
 function updateCartInStorage() {
 	let addTocart = cart.find((data) => {
-		return data.sneaker === main_review.src;
+		return data.sneaker === img;
 	});
 	if (addTocart === undefined) {
 		cart.push({
-			sneaker: main_review.src,
+			sneaker: main_review.src.slice(21),
 			items: counter.textContent,
 			index: main_review.dataset.index,
 		});
