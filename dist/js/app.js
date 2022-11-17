@@ -24,31 +24,29 @@ window.addEventListener("DOMContentLoaded", () => {
 const showcase = [
 	{
 		id: 1,
-		img: "images/image-product-1.jpg",
+		img: "./images/image-product-1.jpg",
 	},
 	{
 		id: 1,
-		img: "images/image-product-2.jpg",
+		img: "./images/image-product-2.jpg",
 	},
 	{
 		id: 1,
-		img: "images/image-product-3.jpg",
+		img: "./images/image-product-3.jpg",
 	},
 	{
 		id: 1,
-		img: "images/image-product-4.jpg",
+		img: "./images/image-product-4.jpg",
 	},
 ];
 
 sneaker_container.addEventListener("click", (e) => {
-	let img = e.target.src;
 	let ImgID = parseInt(e.target.id);
 	let shoeIndex = main_review.setAttribute(
 		"data-index",
 		e.target.dataset.index
 	);
-	main_review.src = img;
-	img = img.slice(21);
+	main_review.setAttribute("src", e.target.src);
 
 	let results = trackData.find((data) => {
 		return data.id === ImgID;
@@ -56,12 +54,12 @@ sneaker_container.addEventListener("click", (e) => {
 	if (results === undefined) {
 		trackData.push({
 			id: ImgID,
-			img: img,
+			img: main_review.slice(21),
 			index: shoeIndex,
 		});
 	} else {
 		results.id = ImgID;
-		results.img = img;
+		results.img = main_review.src;
 	}
 	sessionStorage.setItem("data", JSON.stringify(trackData));
 });
@@ -191,11 +189,11 @@ function createCart() {
 		checkOut.querySelector("h2").style.display = "none";
 		items.innerHTML = cart
 			// =========please fix me======================================
-			.map((cartData) => {
+			.map((cartData, index) => {
 				let search =
-					cart.find((data) => data.items === counter.textContent) || [];
+					cart.find((data) => data.sneaker === cartData.sneaker) || [];
 				let img = search.sneaker.slice(21);
-				let { index, items } = search;
+				let { items } = search;
 				let price = 120.0;
 				let total = items * price;
 				return `
@@ -223,20 +221,19 @@ function createCart() {
 		checkOut.querySelector("h2").style.display = "flex";
 		items.style.display = "none";
 	}
-	document.querySelectorAll(".items").forEach((items) => {
-		items.addEventListener("click", (e) => {
-			e.stopImmediatePropagation();
-			if (e.target.classList.value == "delete") {
-				e.target.parentElement.parentElement.remove();
-				deleteFromStorage(e.target);
-				cartIcon.parentElement.dataset.count = cart.length;
-				if (cartIcon.parentElement.dataset.count == 0) {
-					cartIcon.parentElement.classList.remove("before");
-				}
-			}
-		});
-	});
 }
+document.querySelectorAll(".items").forEach((items) => {
+	items.addEventListener("click", (e) => {
+		if (e.target.classList.value == "delete") {
+			e.target.parentElement.parentElement.remove();
+			deleteFromStorage(e.target);
+			cartIcon.parentElement.dataset.count = cart.length;
+			if (cartIcon.parentElement.dataset.count == 0) {
+				cartIcon.parentElement.classList.remove("before");
+			}
+		}
+	});
+});
 
 checkoutBtn.addEventListener("click", () => {
 	if (counter.textContent == 0) {
