@@ -90,7 +90,7 @@ main {
 			}
 		}
 		.right-container {
-			width: min(100% - u.rem(40), u.rem(800));
+			width: min(100% - u.rem(38), u.rem(800));
 			margin-inline: auto;
 			@include u.breakpoints(large) {
 				width: 100%;
