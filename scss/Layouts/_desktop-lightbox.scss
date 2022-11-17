@@ -11,9 +11,12 @@
 	width: 100%;
 	height: 100%;
 	z-index: 99;
-	@include u.flex;
+	display: none;
 	flex-direction: column;
 	justify-content: center;
+	@include u.breakpoints(large) {
+		@include u.flex;
+	}
 	.main {
 		display: grid;
 		place-content: center;

@@ -386,7 +386,7 @@ main .container .left-container {
 }
 main .container .left-container .show-sneakers {
   position: relative;
-  height: 21.875rem;
+  height: 23.125rem;
 }
 main .container .left-container .show-sneakers .showcase {
   height: 21.875rem;
@@ -403,6 +403,11 @@ main .container .left-container .show-sneakers .arrows {
   width: min(100% - 2.5rem, 43.75rem);
   height: 100%;
   margin-inline: auto;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-user-drag: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -708,11 +713,16 @@ main .container .right-container .pricing-cart .add-cart .button p {
   width: 100%;
   height: 100%;
   z-index: 99;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  display: none;
   flex-direction: column;
   justify-content: center;
+}
+@media (min-width: 56.25rem) {
+  .desktop-lightbox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 .desktop-lightbox .main {
   display: grid;

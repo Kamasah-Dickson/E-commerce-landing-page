@@ -57,7 +57,7 @@ main {
 					height: u.rem(350);
 				}
 				position: relative;
-				height: u.rem(350);
+				height: u.rem(370);
 				.sneaker {
 					height: 100%;
 				}
@@ -70,6 +70,8 @@ main {
 					width: min(100% - u.rem(40), u.rem(700));
 					height: 100%;
 					margin-inline: auto;
+					user-select: none;
+					-webkit-user-drag: none;
 					@include u.flex;
 					.next,
 					.prev {
