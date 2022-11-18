@@ -12,7 +12,7 @@ const cartIcon = document.querySelector(".cart img");
 const checkOut = document.querySelector(".checkout");
 const checkoutBtn = document.querySelector(".button");
 
-const cart = JSON.parse(sessionStorage.getItem("cart")) || []; //checkout cart
+const cart = JSON.parse(sessionStorage.getItem("cart")) || [0]; //checkout cart
 const trackData = JSON.parse(sessionStorage.getItem("data")) || [];
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -200,7 +200,7 @@ function createCart() {
 				
 					<div class="sneaker-checkout">
 				<div class="sneaker-img" data-index ="${index}">
-				<img src=".${img}" />
+				<img src="${img}" />
 				</div>
 				<div class="details">
 				<p>Fall Limited Edition Sneakers...</p>
@@ -235,9 +235,8 @@ checkoutBtn.addEventListener("click", () => {
 	if (counter.textContent == 0) {
 		return;
 	} else {
-		createCart();
-
 		updateCartInStorage();
+		createCart();
 		if (cart.length >= 0) {
 			cartIcon.parentElement.dataset.count = cart.length;
 			cartIcon.parentElement.classList.add("before");
@@ -277,17 +276,17 @@ function decrement(counter) {
 
 function updateCartInStorage() {
 	let addTocart = cart.find((data) => {
-		return data.sneaker === main_review.src.slice(21);
+		return data.sneaker === main_review.src;
 	});
 	if (addTocart === undefined) {
 		cart.push({
-			sneaker: main_review.src.slice(21),
+			sneaker: main_review.src,
 			items: counter.textContent,
 			index: main_review.dataset.index,
 		});
 		createCart();
 	} else {
-		addTocart.sneaker = main_review.src.slice(21);
+		addTocart.sneaker = main_review.src;
 		addTocart.items = counter.textContent;
 		addTocart.index = main_review.dataset.index;
 	}
@@ -392,3 +391,32 @@ prev.addEventListener("click", () => {
 		setActiveSlider[boxIndex].classList.add("active");
 	});
 });
+
+// ===================mobile-lilghtbox===========================
+const mobileBox = document.querySelector(".showcase2");
+
+const mobileSlides = [
+	{
+		id: 1,
+		img: "./images/image-product-1.jpg",
+	},
+	{
+		id: 1,
+		img: "./images/image-product-2.jpg",
+	},
+	{
+		id: 1,
+		img: "./images/image-product-3.jpg",
+	},
+	{
+		id: 1,
+		img: "./images/image-product-4.jpg",
+	},
+];
+
+// mobileBox.innerHTML = mobileSlides.map((slider, index) => {
+// 	let { img } = slider;
+// 	return `
+// 	<img class="sneaker" src="${img}" alt="sneakers"class="sneaker" data-index="${index}">
+// 	`;
+// });

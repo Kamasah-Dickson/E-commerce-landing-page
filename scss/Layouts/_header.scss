@@ -6,7 +6,7 @@ header {
 	left: 0;
 	width: 100%;
 	background-color: g.$White;
-	z-index: 2;
+	z-index: 99;
 	padding-block: u.rem(20);
 	box-shadow: 0 u.rem(1) u.rem(10) u.rem(-2) g.$Dark-grayish-blue;
 	transition: all 0.3s ease;
@@ -103,7 +103,7 @@ header {
 						padding: u.rem(25);
 						.sneaker-checkout {
 							@include u.flex;
-							gap: u.rem(5);
+							gap: u.rem(16);
 							.sneaker-img {
 								width: u.rem(50);
 								border-radius: u.rem(5);

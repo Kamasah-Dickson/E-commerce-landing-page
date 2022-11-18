@@ -9,7 +9,7 @@ main {
 		.container {
 			.left-container {
 				.show-sneakers {
-					width: min(100% - u.rem(70), u.rem(550));
+					// width: min(100% - u.rem(70), u.rem(550));
 					margin-inline: auto;
 					border-radius: 0 0 50% 50%;
 					.sneaker {
@@ -67,15 +67,25 @@ main {
 					top: u.rem(10);
 					left: 0;
 					right: 0;
-					width: min(100% - u.rem(40), u.rem(700));
+					// width: min(100% - u.rem(40), u.rem(700));
 					height: 100%;
 					margin-inline: auto;
 					user-select: none;
 					-webkit-user-drag: none;
 					-webkit-tap-highlight-color: transparent;
 					@include u.flex;
+					z-index: 4;
 					.next,
 					.prev {
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						// top: u.rem(10);
+						// left: 0;
+						// right: 0;
+						margin-inline: auto;
+						user-select: none;
+						-webkit-user-drag: none;
 						display: flex;
 						align-items: center;
 						justify-content: center;
@@ -87,6 +97,23 @@ main {
 						background-color: g.$White;
 						border-radius: 100%;
 					}
+				}
+				max-width: u.rem(540);
+				.showcase {
+					height: u.rem(350);
+				}
+
+				.showcase2 {
+					position: absolute;
+					display: flex;
+					.sneaker {
+						width: 440px;
+					}
+				}
+				position: relative;
+				height: u.rem(370);
+				.sneaker {
+					height: 100%;
 				}
 			}
 		}

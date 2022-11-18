@@ -61,7 +61,7 @@ header {
   left: 0;
   width: 100%;
   background-color: hsl(0deg, 0%, 100%);
-  z-index: 2;
+  z-index: 99;
   padding-block: 1.25rem;
   box-shadow: 0 0.0625rem 0.625rem -0.125rem hsl(219deg, 9%, 45%);
   transition: all 0.3s ease;
@@ -174,7 +174,7 @@ header .container .user-details .cart .checkout .items .sneaker-checkout {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.3125rem;
+  gap: 1rem;
 }
 header .container .user-details .cart .checkout .items .sneaker-checkout .sneaker-img {
   width: 3.125rem;
@@ -353,7 +353,6 @@ main {
     margin: 0;
   }
   main .container .left-container .show-sneakers {
-    width: min(100% - 4.375rem, 34.375rem);
     margin-inline: auto;
     border-radius: 0 0 50% 50%;
   }
@@ -396,6 +395,9 @@ main .container .left-container {
 main .container .left-container .show-sneakers {
   position: relative;
   height: 23.125rem;
+  max-width: 33.75rem;
+  position: relative;
+  height: 23.125rem;
 }
 main .container .left-container .show-sneakers .showcase {
   height: 21.875rem;
@@ -409,7 +411,6 @@ main .container .left-container .show-sneakers .arrows {
   top: 0.625rem;
   left: 0;
   right: 0;
-  width: min(100% - 2.5rem, 43.75rem);
   height: 100%;
   margin-inline: auto;
   -webkit-user-select: none;
@@ -421,9 +422,19 @@ main .container .left-container .show-sneakers .arrows {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  z-index: 4;
 }
 main .container .left-container .show-sneakers .arrows .next,
 main .container .left-container .show-sneakers .arrows .prev {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-inline: auto;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-user-drag: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -435,6 +446,19 @@ main .container .left-container .show-sneakers .arrows .next img,
 main .container .left-container .show-sneakers .arrows .prev img {
   width: 0.8125rem;
   height: 0.8125rem;
+}
+main .container .left-container .show-sneakers .showcase {
+  height: 21.875rem;
+}
+main .container .left-container .show-sneakers .showcase2 {
+  position: absolute;
+  display: flex;
+}
+main .container .left-container .show-sneakers .showcase2 .sneaker {
+  width: 440px;
+}
+main .container .left-container .show-sneakers .sneaker {
+  height: 100%;
 }
 main .container .right-container {
   width: min(100% - 2.375rem, 50rem);
