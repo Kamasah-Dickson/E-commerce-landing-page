@@ -393,8 +393,6 @@ prev.addEventListener("click", () => {
 });
 
 // ===================mobile-lilghtbox===========================
-const mobileBox = document.querySelector(".showcase2");
-
 const mobileSlides = [
 	{
 		id: 1,
@@ -414,9 +412,17 @@ const mobileSlides = [
 	},
 ];
 
-// mobileBox.innerHTML = mobileSlides.map((slider, index) => {
-// 	let { img } = slider;
-// 	return `
-// 	<img class="sneaker" src="${img}" alt="sneakers"class="sneaker" data-index="${index}">
-// 	`;
-// });
+const mobileBox = document.querySelector(".mobile-slider");
+mobileBox.innerHTML = mobileSlides.map((slider, index) => {
+	let { img } = slider;
+	return `
+
+		<img
+			src="${img}"
+			id=""
+			alt="sneakers"
+			class="sneaker"
+			data-index="${index}"
+		/>
+		`;
+});

@@ -390,6 +390,7 @@ main .container .review-sneakers {
   display: none;
 }
 main .container .left-container {
+  overflow: scroll;
   background-size: cover;
 }
 main .container .left-container .show-sneakers {
@@ -411,6 +412,7 @@ main .container .left-container .show-sneakers .arrows {
   top: 0.625rem;
   left: 0;
   right: 0;
+  width: min(100% - 1.25rem, 25rem);
   height: 100%;
   margin-inline: auto;
   -webkit-user-select: none;
@@ -429,7 +431,6 @@ main .container .left-container .show-sneakers .arrows .prev {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-inline: auto;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -449,6 +450,10 @@ main .container .left-container .show-sneakers .arrows .prev img {
 }
 main .container .left-container .show-sneakers .showcase {
   height: 21.875rem;
+}
+main .container .left-container .show-sneakers .showcase .scroll {
+  display: flex;
+  overflow: scroll;
 }
 main .container .left-container .show-sneakers .showcase2 {
   position: absolute;

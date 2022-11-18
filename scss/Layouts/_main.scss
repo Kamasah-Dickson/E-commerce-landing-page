@@ -51,6 +51,7 @@ main {
 		display: grid;
 		grid-template-columns: 1fr;
 		.left-container {
+			overflow: scroll;
 			background-size: cover;
 			.show-sneakers {
 				.showcase {
@@ -67,7 +68,7 @@ main {
 					top: u.rem(10);
 					left: 0;
 					right: 0;
-					// width: min(100% - u.rem(40), u.rem(700));
+					width: min(100% - u.rem(20), u.rem(400));
 					height: 100%;
 					margin-inline: auto;
 					user-select: none;
@@ -80,10 +81,6 @@ main {
 						display: flex;
 						align-items: center;
 						justify-content: center;
-						// top: u.rem(10);
-						// left: 0;
-						// right: 0;
-						margin-inline: auto;
 						user-select: none;
 						-webkit-user-drag: none;
 						display: flex;
@@ -101,6 +98,10 @@ main {
 				max-width: u.rem(540);
 				.showcase {
 					height: u.rem(350);
+					.scroll {
+						display: flex;
+						overflow: scroll;
+					}
 				}
 
 				.showcase2 {
