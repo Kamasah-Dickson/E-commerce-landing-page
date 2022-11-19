@@ -231,7 +231,8 @@ document.querySelector(".checkout").addEventListener("click", (e) => {
 	}
 });
 
-checkoutBtn.addEventListener("click", () => {
+checkoutBtn.addEventListener("click", (e) => {
+	e.preventDefault();
 	if (counter.textContent == 0) {
 		return;
 	} else {
