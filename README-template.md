@@ -13,8 +13,6 @@ This is a solution to the [E-commerce product page challenge on Frontend Mentor]
   - [Continued development](#continued-development)
 - [Author](#author)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 ### The challenge
@@ -35,8 +33,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [solution URL](https://github.com/Kamasah-Dickson/E-commerce-landing-page)
+- Live Site URL: [live site URL](https://kamasah-dickson.github.io/E-commerce-landing-page/)
 
 ## My process
 
@@ -60,4 +58,4 @@ I want to focus more on displaying data using higher order function such as maps
 ## Author
 
 - Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- Twitter - [@yourusername](https://twitter.com/Kamas_DEV)

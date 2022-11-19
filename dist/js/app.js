@@ -12,7 +12,7 @@ const cartIcon = document.querySelector(".cart img");
 const checkOut = document.querySelector(".checkout");
 const checkoutBtn = document.querySelector(".button");
 
-const cart = JSON.parse(sessionStorage.getItem("cart")) || [0]; //checkout cart
+const cart = JSON.parse(sessionStorage.getItem("cart")) || []; //checkout cart
 const trackData = JSON.parse(sessionStorage.getItem("data")) || [];
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -72,7 +72,7 @@ function generateShoe() {
 		.map((shoe, index) => {
 			let { id, img } = shoe;
 			return `
-			<div class="thumb" id ="${id}" data-index ="${index}">
+			<div class="thumb" id ="${id}">
 			<img
 			class="sneaker" id ="${id}"
 			src="${img}"
