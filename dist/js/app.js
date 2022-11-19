@@ -72,7 +72,7 @@ function generateShoe() {
 		.map((shoe, index) => {
 			let { id, img } = shoe;
 			return `
-			<div class="thumb" id ="${id}">
+			<div class="thumb">
 			<img
 			class="sneaker" id ="${id}"
 			src="${img}"
