@@ -348,7 +348,7 @@ main {
   padding-top: 1.25rem;
   display: grid;
 }
-@media (min-width: 36.25rem) {
+@media (min-width: 27.5rem) {
   main {
     margin: 0;
   }
@@ -390,13 +390,14 @@ main .container .review-sneakers {
   display: none;
 }
 main .container .left-container {
-  overflow: scroll;
+  height: clamp(27.5rem, 21.25rem + 2vw, 28.125rem);
   background-size: cover;
 }
 main .container .left-container .show-sneakers {
+  overflow: hidden;
   position: relative;
   height: 23.125rem;
-  max-width: 33.75rem;
+  max-width: 27.5rem;
   position: relative;
   height: 23.125rem;
 }
@@ -451,16 +452,12 @@ main .container .left-container .show-sneakers .arrows .prev img {
 main .container .left-container .show-sneakers .showcase {
   height: 21.875rem;
 }
+main .container .left-container .show-sneakers .showcase .remove {
+  display: none;
+}
 main .container .left-container .show-sneakers .showcase .scroll {
   display: flex;
-  overflow: scroll;
-}
-main .container .left-container .show-sneakers .showcase2 {
-  position: absolute;
-  display: flex;
-}
-main .container .left-container .show-sneakers .showcase2 .sneaker {
-  width: 440px;
+  transition: transform 0.3s ease;
 }
 main .container .left-container .show-sneakers .sneaker {
   height: 100%;
@@ -627,6 +624,7 @@ main .container .right-container .pricing-cart .add-cart .button p {
     padding-top: 8.75rem;
   }
   main .container .left-container {
+    height: unset;
     border-radius: 0.9375rem;
   }
   main .container .left-container .show-sneakers {
@@ -639,6 +637,12 @@ main .container .right-container .pricing-cart .add-cart .button p {
   }
   main .container .left-container .show-sneakers .showcase .sneaker {
     border-radius: 1.25rem;
+  }
+  main .container .left-container .show-sneakers .showcase .remove {
+    display: flex;
+  }
+  main .container .left-container .show-sneakers .showcase .mobile-slider {
+    display: none;
   }
   main .container .left-container .show-sneakers .arrows {
     display: none;

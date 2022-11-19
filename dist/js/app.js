@@ -412,10 +412,12 @@ const mobileSlides = [
 	},
 ];
 
+// const getSliderImg = document.querySelector(".showcase img");
 const mobileBox = document.querySelector(".mobile-slider");
-mobileBox.innerHTML = mobileSlides.map((slider, index) => {
-	let { img } = slider;
-	return `
+mobileBox.innerHTML = mobileSlides
+	.map((slider, index) => {
+		let { img } = slider;
+		return `
 
 		<img
 			src="${img}"
@@ -425,4 +427,93 @@ mobileBox.innerHTML = mobileSlides.map((slider, index) => {
 			data-index="${index}"
 		/>
 		`;
+	})
+	.join("");
+
+const mobilePrev = document.querySelector(".mobile-prev");
+const mobileNext = document.querySelector(".mobile-next");
+const scroll = document.querySelector(".scroll");
+
+let mobileSliderWidth = scroll.clientWidth; //440px
+let mediaScreen = window.matchMedia("(max-width:465px)");
+let mediaScreen2 = window.matchMedia("(max-width:435px)");
+let mediaScreen3 = window.matchMedia("(max-width:415px)");
+
+let mobileSliderIndex = 0;
+
+mobileNext.addEventListener("click", () => {
+	if (mobileSliderIndex === 3) {
+		mobileSliderIndex = 0;
+		mobileSliderWidth = 0;
+	} else {
+		mobileSliderWidth = 440;
+		mobileSliderIndex += 1;
+		if (mediaScreen3.matches) {
+			let widthSlides = scroll.clientWidth;
+			mobileSliderWidth = widthSlides + 4;
+		}
+		//
+		if (mediaScreen.matches) {
+			let widthSlides = scroll.clientWidth;
+			mobileSliderWidth = widthSlides + 4;
+		}
+	}
+	scroll.style.transform = `translateX(-${
+		(mobileSliderWidth - 1) * mobileSliderIndex
+	}px)`;
+	if (mediaScreen2.matches) {
+		scroll.style.transform = `translateX(-${
+			(mobileSliderWidth - 4) * mobileSliderIndex
+		}px)`;
+	}
+	switch (mobileSliderIndex) {
+		case 0:
+			main_review.src = "./images/image-product-1.jpg";
+			break;
+		case 1:
+			main_review.src = "./images/image-product-2.jpg";
+			break;
+		case 2:
+			main_review.src = "./images/image-product-3.jpg";
+			break;
+		case 3:
+			main_review.src = "./images/image-product-4.jpg";
+			break;
+	}
+});
+mobilePrev.addEventListener("click", () => {
+	if (mobileSliderIndex === 0) {
+		mobileSliderIndex = 3;
+		mobileSliderWidth = -445;
+		if (mediaScreen2.matches) {
+			mobileSliderIndex = 3;
+			let widthSlides = scroll.clientWidth;
+			mobileSliderWidth = -widthSlides + 1;
+		}
+	} else {
+		mobileSliderWidth = -445;
+		mobileSliderIndex -= 1;
+		if (mediaScreen3.matches) {
+			let widthSlides = scroll.clientWidth;
+			mobileSliderWidth = -widthSlides - 4;
+		}
+	}
+	scroll.style.transform = `translateX(${
+		mobileSliderWidth * mobileSliderIndex
+	}px)`;
+
+	switch (mobileSliderIndex) {
+		case 0:
+			main_review.src = "./images/image-product-1.jpg";
+			break;
+		case 1:
+			main_review.src = "./images/image-product-2.jpg";
+			break;
+		case 2:
+			main_review.src = "./images/image-product-3.jpg";
+			break;
+		case 3:
+			main_review.src = "./images/image-product-4.jpg";
+			break;
+	}
 });

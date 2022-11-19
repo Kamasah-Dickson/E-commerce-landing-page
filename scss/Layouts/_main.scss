@@ -51,9 +51,12 @@ main {
 		display: grid;
 		grid-template-columns: 1fr;
 		.left-container {
-			overflow: scroll;
+			// overflow: hidden;
+			height: clamp(u.rem(440), u.rem(340) + 2vw, u.rem(450));
+			// overflow-y: hidden;
 			background-size: cover;
 			.show-sneakers {
+				overflow: hidden;
 				.showcase {
 					height: u.rem(350);
 				}
@@ -95,22 +98,20 @@ main {
 						border-radius: 100%;
 					}
 				}
-				max-width: u.rem(540);
+				max-width: u.rem(440);
 				.showcase {
+					.remove {
+						display: none;
+					}
 					height: u.rem(350);
+
 					.scroll {
 						display: flex;
-						overflow: scroll;
+						transition: transform 0.3s ease;
 					}
 				}
 
-				.showcase2 {
-					position: absolute;
-					display: flex;
-					.sneaker {
-						width: 440px;
-					}
-				}
+				//
 				position: relative;
 				height: u.rem(370);
 				.sneaker {
@@ -264,6 +265,7 @@ main {
 
 		.container {
 			.left-container {
+				height: unset;
 				border-radius: u.rem(15);
 				.show-sneakers {
 					width: 100%;
@@ -273,6 +275,12 @@ main {
 						border-radius: u.rem(20);
 						.sneaker {
 							border-radius: u.rem(20);
+						}
+						.remove {
+							display: flex;
+						}
+						.mobile-slider {
+							display: none;
 						}
 					}
 					.arrows {
