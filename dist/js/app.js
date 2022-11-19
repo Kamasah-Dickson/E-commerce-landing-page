@@ -74,7 +74,7 @@ function generateShoe() {
 			return `
 			<div class="thumb">
 			<img
-			class="sneaker" id ="${id}"
+			class="sneaker"
 			src="${img}"
 			alt="sneakers"/>
 			</div>`;
