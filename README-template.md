@@ -57,5 +57,5 @@ I want to focus more on displaying data using higher order function such as maps
 
 ## Author
 
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://twitter.com/Kamas_DEV)
+- Frontend Mentor - [@Kamasah Dickson](https://www.frontendmentor.io/profile/Kamasah-Dickson)
+- Twitter - [@KamasDev](https://twitter.com/Kamas_DEV)
